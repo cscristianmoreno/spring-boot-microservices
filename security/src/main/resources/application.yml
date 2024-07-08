@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: security
+  cloud:
+    config:
+      name: config-jwt
+      discovery:
+        enabled: true
+        service-id: config
+
+server:
+  port: 8090

@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+      - id: save
+        uri: lb://users/users/save
+        predicates:
+          - Path=/users/save
+
+      - id: login
+        uri: lb://users/users/login
+        predicates:
+          - Path=/users/login
+
+      - id: allUsers
+        uri: lb://users/users/all
+        predicates:
+        - Path=/users/all
+        filters:
+        - name: RequiredToken
+
+    config:
+      name: secret-header
+      discovery:
+        enabled: true
+        service-id: config
+
+server:
+  port: 8080

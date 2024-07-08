@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: users
+    # location: .
+  cloud:
+    config:
+      uri: lb://config
+      name: config-database, secret-header
+      discovery:
+        enabled: true
+        serviceId: config
+  
